@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -30,7 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GameOffsets\GameOffsets.csproj" />
+    <Reference Include="GameOffsets">
+      <HintPath>lib\\GameOffsets\\GameOffsets.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
   </ItemGroup>
 
   <Target Name="DeleteDebugSymbolFiles" AfterTargets="Build" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -38,7 +42,7 @@
   </Target>
 
   <Target Name="RemoveDirectories" AfterTargets="Build">
-    <RemoveDir Directories="$(OutDir)runtimes\win-x86;$(OutDir)runtimes\osx;$(OutDir)runtimes\linux-x64;" />
+    <RemoveDir Directories="$(OutDir)runtimes\\win-x86;$(OutDir)runtimes\\osx;$(OutDir)runtimes\\linux-x64;" />
   </Target>
 
 </Project>
